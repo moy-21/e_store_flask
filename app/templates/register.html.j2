@@ -1,0 +1,70 @@
+{% extends 'base.html.j2' %}
+{% block title %}
+
+  {%if current_user.is_authenticated%}
+    Edit Profile
+  {%else%}
+    Register
+  {%endif%}
+
+{% endblock %}
+
+{% block content %}
+<h1>
+  {%if current_user.is_authenticated%}
+    Edit Profile
+  {%else%}
+    Register
+  {%endif%}
+</h1>
+<form action="{{url_for('auth.edit_profile') if current_user.is_authenticated else url_for('auth.register')}}" method = "POST">
+
+  {{form.hidden_tag()}}
+
+  <div>
+  {{form.first_name.label(class="form-label")}}
+  {{form.first_name(class="form-control bg-secondary")}}
+  {% for error in form.first_name.errors %}
+    <small style="color:red;">{{error}}</small>
+  {% endfor %}
+  </div>
+<div>
+  {{form.last_name.label(class="form-label")}}
+  {{form.last_name(class="form-control bg-secondary")}}
+  {% for error in form.last_name.errors %}
+    <small style="color:red;">{{error}}</small>
+  {% endfor %}
+  </div>
+
+  <div>
+  {{form.email.label(class="form-label")}}
+  {{form.email(class="form-control bg-secondary")}}
+  {% for error in form.email.errors %}
+    <small style="color:red;">{{error}}</small>
+  {% endfor %}
+  </div>
+
+  <br>
+  <div>
+  {{form.password.label(class="form-label")}}
+  {{form.password(class="form-control bg-secondary")}}
+  {% for error in form.password.errors %}
+    <small style="color:red;">{{error}}</small>
+  {% endfor %}
+  </div>
+
+  <div>
+  {{form.confirm_password.label(class="form-label")}}
+  {{form.confirm_password(class="form-control bg-secondary")}}
+  {% for error in form.confirm_password.errors %}
+    <small style="color:red;">{{error}}</small>
+  {% endfor %}
+  </div>
+  
+  <br>
+  <div>
+  {{form.submit(class="btn btn-primary form-control btn-outline-warning")}}
+  </div>
+
+</form>
+{% endblock %}

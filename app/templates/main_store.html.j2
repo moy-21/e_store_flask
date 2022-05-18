@@ -1,0 +1,13 @@
+{% extends "base.html.j2" %}
+{% block title %}
+Shop
+{% endblock %}
+{% block content%}
+
+{%for item in items%}
+{% include './includes/item.html.j2' %}
+
+{%endfor%}
+    
+
+{% endblock %}

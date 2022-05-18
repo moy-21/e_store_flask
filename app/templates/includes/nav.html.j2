@@ -1,0 +1,40 @@
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img src = "https://res.cloudinary.com/dipcloqy3/image/upload/v1652678243/10_KICKS_LogoBlue_cvvjh6.gif" style = "height:80px"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                {%if current_user.is_authenticated%}
+                <a class="nav-link active chakra" aria-current="page" href="/">Home</a>
+                <a class="nav-link chakra" href="{{url_for('main.shop')}}">Shop</a>
+                <a class="nav-link chakra" href="{{url_for('main.post')}}">Post Item</a>
+                
+
+                {%else%}
+                <a class="nav-link chakra" href="{{url_for('main.shop')}}">Shop</a>
+                <a class="nav-link chakra" href="{{url_for('auth.login')}}">Login</a>
+                <a class="nav-link chakra" href="{{url_for('auth.register')}}">Register</a>
+                {%endif%}
+            </div>
+                {% if current_user.is_authenticated %}
+                <ul class="navbar-nav ms-auto align-items-center">
+    
+                <li class="nav-item">
+                <div class="row">
+                <div class="col-12">    
+                    <a class="nav-link d-flex justify-content-center" href="{{url_for('main.cart')}}"><i class="bi bi-cart text-danger" style="font-size: 1.5rem"></i></a>
+                </div>
+                <div class="col-12">
+                    <a class="nav-link d-flex justify-content-center" href="{{url_for('auth.logout')}}"><i class="bi bi-box-arrow-right text-danger" style="font-size: 1.5rem"></i></a>
+                </div>
+                </div>
+                    
+                </li>
+                </ul>
+                {% endif %}
+            </div>
+
+    </div>
+    </nav>

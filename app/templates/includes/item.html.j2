@@ -1,0 +1,19 @@
+<div class="card" style="width: 18rem;">
+  <img src="{{item.img}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{item.name.title()}}</h5>
+    <p class="card-text">{{item.desc}}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">${{item.price}}</li>
+    <li class="list-group-item">{{item.created_on}}</li>
+  </ul>
+  <div class="card-body">
+    <a href="{{url_for('main.get_item', item_id= item.item_id)}}" class="card-link">See Item</a>
+    {%if item in cart%}
+    <a href="{{url_for('main.remove_item', item_id= item.item_id)}}" class="card-link">Remove</a>
+    {%else%}
+    <a href="{{url_for('main.add_item', item_id= item.item_id)}}" class="card-link">Add To Cart</a>
+    {%endif%}
+  </div>
+</div>

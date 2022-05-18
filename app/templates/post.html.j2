@@ -1,0 +1,35 @@
+{% extends "base.html.j2" %}
+{% block title %}
+Post
+{% endblock %}
+{% block content%}
+<h1>Post</h1>
+<form action="{{url_for('main.post')}}" method = "POST">
+
+  {{form.hidden_tag()}}
+  <div>
+  {{form.name.label(class="form-label")}}
+  {{form.name(class="form-control bg-secondary")}}
+  </div>
+  <br>
+  <div>
+  {{form.price.label(class="form-label")}}
+  {{form.price(class="form-control bg-secondary")}}
+  </div>
+  <br>
+  <div>
+  {{form.img.label(class="form-label")}}
+  {{form.img(class="form-control bg-secondary")}}
+  </div>
+  <br>
+  <div>
+  {{form.desc.label(class="form-label")}}
+  {{form.desc(class="form-control bg-secondary")}}
+  </div>
+  <br>
+  <div>
+  {{form.submit(class="btn btn-primary form-control")}}
+  </div>
+</form>
+
+{% endblock %}

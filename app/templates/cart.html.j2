@@ -1,0 +1,15 @@
+{% extends "base.html.j2" %}
+{% block title %}
+Cart
+{% endblock %}
+{% block content%}
+{%for item in current_user.cart%}
+{% include './includes/item.html.j2' %}
+<br>
+{%endfor%}
+<a href="{{url_for('main.remove_all')}}" class="btn btn-primary form-control ">Empty Cart</a>
+<br>
+<br>
+<a href="{{url_for('main.pay')}}" class="btn btn-primary form-control">Pay</a>
+
+{% endblock %}
